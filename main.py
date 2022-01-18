@@ -8,8 +8,8 @@ dpi = 4000
 gologramRad = 1  # мм
 z0 = 5  # см
 
-kLaser = 2 * cmath.pi / lambdaLaser * 1e-9
-kPoint = 2 * cmath.pi / lambdaPoint * 1e-9
+kLaser = 2 * cmath.pi / (lambdaLaser * 1e-9)
+kPoint = 2 * cmath.pi / (lambdaPoint * 1e-9)
 
 
 def waveLaser(z):
