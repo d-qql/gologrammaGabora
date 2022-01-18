@@ -1,11 +1,11 @@
 import cmath
 import math
 import numpy as np
-
+import imageio
 lambdaLaser = 600  # нм
 lambdaPoint = 600  # нм
-dpi = 4000
-gologramRad = 1  # мм
+dpi = 1000
+gologramRad = 10  # мм
 z0 = 5  # см
 
 kLaser = 2 * cmath.pi / (lambdaLaser * 1e-9)
@@ -33,13 +33,13 @@ def interfere():
         y = - gologramRad / 2 * 1e-3
         for j in range(length):
             picture[i][j] = cmath.polar(waveLaser(z) + wavePoint(x, y, z))[0] ** 2
-            print(cmath.polar(waveLaser(z) + wavePoint(x, y, z))[0])
+            # print(cmath.polar(waveLaser(z) + wavePoint(x, y, z))[0])
             my_file.write(str(x) + ", " + str(y) + ", " + str(picture[i][j]) + "\n")
             y += step
         x += step
     my_file.close()
-    print(picture)
-
+    # print(picture)
+    imageio.imwrite("out.png", picture)
 
 if __name__ == "__main__":
     interfere()
